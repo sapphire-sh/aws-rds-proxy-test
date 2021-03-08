@@ -1,19 +1,27 @@
-output "mysql_endpoint" {
-  value = aws_db_instance.proxy-test.address
+output "rds_endpoint" {
+  value = aws_db_instance.main.address
 }
 
-output "mysql_name" {
-  value = aws_db_instance.proxy-test.name
+output "rds_name" {
+  value = aws_db_instance.main.name
 }
 
-output "mysql_port" {
-  value = aws_db_instance.proxy-test.port
+output "rds_port" {
+  value = aws_db_instance.main.port
 }
 
-output "mysql_username" {
-  value = aws_db_instance.proxy-test.username
+output "rds_username" {
+  value = aws_db_instance.main.username
 }
 
-output "mysql_password" {
+output "rds_password" {
   value = var.password
+}
+
+output "rds_proxy_endpoint" {
+  value = aws_db_proxy.main.endpoint
+}
+
+output "secret_values" {
+  value = jsondecode(aws_secretsmanager_secret_version.main.secret_string)
 }
